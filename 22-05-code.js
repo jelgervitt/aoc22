@@ -550,22 +550,24 @@ const directions = unpInstr.map(line => [...line.match(regexp)]);
 
 // run the movements of boxes
 
-for (dir of directions) {
-  const amt = dir[0];
-  const from = dir[1];
-  const to = dir[2];
+function moveSingleBlocks() {
+  for (dir of directions) {
+    const amt = dir[0];
+    const from = dir[1];
+    const to = dir[2];
 
-  for (let i = 0; i < amt; i++) {
-    let box = arr[from].shift();
-    arr[to].unshift(box);
+    for (let i = 0; i < amt; i++) {
+      let box = arr[from].shift();
+      arr[to].unshift(box);
+    }
   }
+
+  return arr.map(row => row[0]).join();
 }
 
 // show the tops of each stack
 
-res = arr.map(row => row[0]);
-
-// console.log(res);
+// console.log(moveSingleBlocks());
 
 /************************************ Part 2 ********************************************/
 
@@ -577,3 +579,17 @@ res = arr.map(row => row[0]);
  * newarr.unshift(...take);
  * console.log(newarr);
  */
+
+function moveMoreBlocks() {
+  for (dir of directions) {
+    const amt = dir[0];
+    const from = dir[1];
+    const to = dir[2];
+    let boxes = arr[from].splice(0, amt);
+    arr[to].unshift(...boxes);
+  }
+
+  return arr.map(row => row[0]).join();
+}
+
+console.log(moveMoreBlocks());
