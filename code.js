@@ -565,6 +565,15 @@ for (dir of directions) {
 
 res = arr.map(row => row[0]);
 
-console.log(res);
+// console.log(res);
 
 /************************************ Part 2 ********************************************/
+
+/**
+ * const testarr = [1, 2, 3];
+ * const take = testarr.splice(0, 2);
+ * console.log(take);
+ * const newarr = [4, 5, 6];
+ * newarr.unshift(...take);
+ * console.log(newarr);
+ */
